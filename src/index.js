@@ -7,14 +7,14 @@ export default {
       // 1) Datos de summoner
       const sRes = await fetch(
         `https://${region}.api.riotgames.com/lol/summoner/v4/summoners/by-name/${encodeURIComponent(name)}`,
-        { headers: { "X-Riot-Token": env.RIOT_API_KEY } }
+        { headers: { "X-Riot-Token": env.RGAPI-5e226843-f286-4190-bac3-9561e757101e } }
       );
       const summoner = await sRes.json();
 
       // 2) Datos de league
       const lRes = await fetch(
         `https://${region}.api.riotgames.com/lol/league/v4/entries/by-summoner/${summoner.id}`,
-        { headers: { "X-Riot-Token": env.RIOT_API_KEY } }
+        { headers: { "X-Riot-Token": env.RGAPI-5e226843-f286-4190-bac3-9561e757101e } }
       );
       const leagues = await lRes.json();
 
@@ -29,11 +29,11 @@ export default {
         elo: soloq.leaguePoints // lo podés ajustar
       };
 
-      await fetch(`${env.SUPABASE_URL}/rest/v1/players`, {
+      await fetch(`${env.https://klnnytucxqfojusrkaya.supabase.co}/rest/v1/players`, {
         method: "POST",
         headers: {
-          "apikey": env.SUPABASE_SERVICE_ROLE,
-          "Authorization": `Bearer ${env.SUPABASE_SERVICE_ROLE}`,
+          "apikey": env.eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imtsbm55dHVjeHFmb2p1c3JrYXlhIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc2NjgwMTAyOSwiZXhwIjoyMDgyMzc3MDI5fQ.o3oNktCG0BP6PlPZGEmugrOTwvIM-3d02eFQWS7EFmU,
+          "Authorization": `Bearer ${env.eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imtsbm55dHVjeHFmb2p1c3JrYXlhIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc2NjgwMTAyOSwiZXhwIjoyMDgyMzc3MDI5fQ.o3oNktCG0BP6PlPZGEmugrOTwvIM-3d02eFQWS7EFmU}`,
           "Content-Type": "application/json",
           "Prefer": "resolution=merge-duplicates"
         },
